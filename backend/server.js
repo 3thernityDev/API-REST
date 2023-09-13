@@ -1,6 +1,10 @@
 // Importation des dépendences
 import express from "express";
 import { router } from "./routes/post.routes.js";
+import { connectDB } from "./config/db.js";
+
+// Connexion a la BDD
+connectDB();
 
 // Creation du server express
 const app = express();
