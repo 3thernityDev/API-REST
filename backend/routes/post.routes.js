@@ -1,42 +1,30 @@
 // Importataion de express
 import express from "express";
+import {
+    createPost,
+    deletePost,
+    dislikePost,
+    editPost,
+    getPost,
+    likePost,
+} from "../controllers/post.controller.js";
 
-// Mise en place du CRUD (Create, Response, Update, Delete)
+// Mise en place du CRUD (Create, Read, Update, Delete)
 export const router = express.Router();
 
-// Response
-router.get("/", (req, res) => {
-    res.json({ message: "Test" });
-});
+// Read
+router.get("/", getPost);
 
 // Create
-router.post("/", (req, res) => {
-    console.log(req.body);
-    res.json({ message: req.body.message });
-});
+router.post("/", createPost);
 
 // Update
-router.put("/:id", (req, res) => {
-    res.json({ messageId: req.params.id });
-});
+router.put("/:id", editPost);
 
 // Delete
-router.delete("/:id", (req, res) => {
-    res.json({
-        message:
-            "Le poste qui a pour id: " + req.params.id + " à été supprimer",
-    });
-});
+router.delete("/:id", deletePost);
 
 // Optionnel (like)
-router.patch("/like-post/:id", (req, res) => {
-    res.json({
-        message: "Le poste portant l'id:" + req.params.id + "à été liké !",
-    });
-});
+router.patch("/like-post/:id", likePost);
 
-router.patch("/dislike-post/:id", (req, res) => {
-    res.json({
-        message: "Le poste portant l'id:" + req.params.id + "à été disliké !",
-    });
-});
+router.patch("/dislike-post/:id", dislikePost);
