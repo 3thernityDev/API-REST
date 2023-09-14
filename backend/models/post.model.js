@@ -1,6 +1,7 @@
 // Importation des depedences
 import mongoose from "mongoose";
 
+// Models JSON pour la bdd
 export const postSchema = mongoose.Schema(
     {
         message: {
@@ -19,5 +20,3 @@ export const postSchema = mongoose.Schema(
         timestamps: true,
     }
 );
-
-// module.exports = mongoose.model("post", postSchema);

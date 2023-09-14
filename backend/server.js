@@ -17,4 +17,4 @@ app.use(express.urlencoded({ extended: false }));
 // Ecoute sur le port spécifié
 app.listen(port, () => console.log("Serveur en ligne sur le port " + port));
 
-app.use("/test", router);
+app.use("/post", router);

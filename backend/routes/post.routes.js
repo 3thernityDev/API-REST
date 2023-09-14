@@ -1,19 +1,17 @@
 // Importataion de express
 import express from "express";
+import { setPosts } from "../controllers/post.controller.js";
 
-// Mise en place du CRUD (Create, Response, Update, Delete)
+// Mise en place du CRUD (Create, Read, Update, Delete)
 export const router = express.Router();
 
-// Response
+// Read
 router.get("/", (req, res) => {
     res.json({ message: "Test" });
 });
 
 // Create
-router.post("/", (req, res) => {
-    console.log(req.body);
-    res.json({ message: req.body.message });
-});
+router.post("/", (req, res), setPosts);
 
 // Update
 router.put("/:id", (req, res) => {
