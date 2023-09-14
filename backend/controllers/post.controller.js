@@ -88,8 +88,14 @@ export const deletePost = async (req, res) => {
     }
 
     // Suppression du post
-    const removePost = await postModel.findByIdAndDelete(post, req.body);
+    // const removePost = await postModel.findByIdAndDelete(post, req.body);
 
+    // res.status(200).json({
+    //     message: "Le poste à été supprimer",
+    // });
+
+    // Seconde technique pour supprimer un post
+    await post.deleteOne();
     res.status(200).json({
         message: "Le poste à été supprimer",
     });
