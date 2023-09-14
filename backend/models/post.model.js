@@ -1,9 +1,10 @@
-// Importation des depedences
+// Importation des dépendances
 import mongoose from "mongoose";
 
-// Models JSON pour la bdd
-export const postSchema = mongoose.Schema(
+// Modèle JSON pour la base de données
+const postSchema = new mongoose.Schema(
     {
+        // Définition des champs du schéma
         message: {
             type: String,
             required: true,
@@ -17,6 +18,10 @@ export const postSchema = mongoose.Schema(
         },
     },
     {
-        timestamps: true,
+        // Options du schéma
+        timestamps: true, // Crée automatiquement les champs "createdAt" et "updatedAt"
     }
 );
+
+// Création d'un modèle à partir du schéma
+export default mongoose.model("Post", postSchema);
