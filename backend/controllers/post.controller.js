@@ -27,10 +27,14 @@ export const createPost = async (req, res) => {
             .json({ message: "Merci de remplir tous les champs!" });
     }
 
+    // Si jamais l'utilisateur n'as pas enter de tags lors de la création du poste ou la catégorise automatiquement dans divers
+    const tagnoset = "divers";
+
     // Création d'un nouveau post dans la base de données
     const newPost = new Post({
         message: req.body.message,
         author: req.body.author,
+        tag: req.body.tag || tagnoset,
     });
 
     try {
