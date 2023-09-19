@@ -27,6 +27,8 @@ const userSchema = new mongoose.Schema(
         mail: {
             type: String,
             required: true,
+            match: /.+\@.+\..+/,
+            unique: true,
         },
     },
     {
