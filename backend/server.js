@@ -2,6 +2,7 @@
 import express from "express";
 import { router } from "./routes/post.routes.js";
 import { connectDB } from "./config/db.js";
+import { usersRouter } from "./routes/user.routes.js";
 
 // Connexion a la BDD
 connectDB();
@@ -18,3 +19,4 @@ app.use(express.urlencoded({ extended: false }));
 app.listen(port, () => console.log("Serveur en ligne sur le port " + port));
 
 app.use("/post", router);
+app.use("/user", usersRouter);
