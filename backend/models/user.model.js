@@ -30,6 +30,9 @@ const userSchema = new mongoose.Schema(
             match: /.+\@.+\..+/,
             unique: true,
         },
+        avatar: {
+            type: String,
+        },
     },
     {
         // Options du schéma

@@ -98,7 +98,7 @@ export const deletePost = async (req, res) => {
     //     message: "Le poste à été supprimer",
     // });
 
-    // Seconde technique pour supprimer un post
+    // Seconde méthode pour supprimer un post
     await post.deleteOne();
     res.status(200).json({
         message: "Le poste à été supprimer",

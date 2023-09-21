@@ -65,23 +65,36 @@ export const createUser = async (req, res) => {
 
 // Fonction pour editer un post
 export const editUser = async (req, res) => {
-    // Localisation du post a modifier par son id
-    const user = await userModel.findById(req.params.id);
+    try {
+        // Localisation de l'utilisateur à modifier par son ID
+        const user = await userModel.findById(req.params.id);
 
-    // On verifie si le poste selectionner existe
-    if (!user) {
-        res.status(400).json({
-            message: "L'utilisateur selectionner n'existe pas!!",
+        // On vérifie si l'utilisateur sélectionné existe
+        if (!user) {
+            return res.status(400).json({
+                message: "L'utilisateur sélectionné n'existe pas !!",
+            });
+        }
+
+        // Mise à jour de l'utilisateur
+        const updatedUser = await userModel.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+            }
+        );
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message:
+                "Une erreur est survenue lors de la mise à jour de l'utilisateur.",
         });
     }
-
-    // Mise à jour du post
-    const updateUser = await userModel.findByIdAndUpdate(user, req.body, {
-        new: true,
-    });
-
-    res.status(200).json(updateUser);
 };
+
 
 // ============= \\
 //     DELETE     \\
